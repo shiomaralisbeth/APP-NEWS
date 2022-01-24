@@ -2,6 +2,8 @@ package com.shiomara.appnews.presentation
 
 import android.app.Application
 import com.shiomara.appnews.domain.di.interactionModule
+import com.shiomara.appnews.presentation.ui.di.appModule
+import com.shiomara.appnews.presentation.ui.di.presentationModule
 import com.shiomara.appnewsdata.di.databaseModule
 import com.shiomara.appnewsdata.di.networkModule
 import com.shiomara.appnewsdata.di.repositoryModule
@@ -11,10 +13,11 @@ import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 import org.koin.core.logger.Level
 
-class NewsApp: Application() {
+class NewsApp : Application() {
 
     val domainModules = listOf(interactionModule)
     val dataModules = listOf(databaseModule, networkModule, repositoryModule)
+    val appModules = listOf(presentationModule, appModule)
 
 
     override fun onCreate() {
@@ -22,7 +25,11 @@ class NewsApp: Application() {
         startKoin {
             if (BuildConfig.DEBUG) androidLogger(Level.ERROR)
             androidContext(this@NewsApp)
-            modules(domainModules + dataModules)
+            modules(
+                domainModules
+                        + dataModules
+                        + appModules
+            )
         }
     }
 }

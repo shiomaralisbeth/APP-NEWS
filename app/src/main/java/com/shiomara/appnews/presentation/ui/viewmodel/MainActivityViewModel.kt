@@ -1,31 +1,17 @@
 package com.shiomara.appnews.presentation.ui.viewmodel
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import com.shiomara.appnews.domain.common.onFailure
+import com.shiomara.appnews.domain.common.onSuccess
+import com.shiomara.appnews.domain.noticias.GetNoticiasList
+import com.shiomara.appnews.domain.noticias.Noticia
+import com.shiomara.appnews.presentation.ui.common.Success
+import com.shiomara.appnews.presentation.ui.common.Error
 
-class MainActivityViewModel() : ViewModel() {
-
-
-    private val _isLoading = MutableLiveData<Boolean>()
-    val  isLoading: LiveData<Boolean> get() = _isLoading
-
-    private val _noticias = MutableLiveData<List<com.shiomara.appnews.domain.noticias.Noticia>>()
-    val  noticiasList: LiveData<List<com.shiomara.appnews.domain.noticias.Noticia>> get() = _noticias
-
-
-    fun onCreate() {
-        viewModelScope.launch(Dispatchers.Main) {
-            _isLoading.value = true
-            //_noticias.value = getNoticias.invoke()
-            _isLoading.value = false
-        }
-    }
-
-    fun onNoticiaClick(noticia: com.shiomara.appnews.domain.noticias.Noticia){
-
+class MainActivityViewModel(private val getNoticiasList: GetNoticiasList) :
+    BaseViewModel<List<Noticia>, Any>() {
+    fun getAll() = executeUseCase {
+        getNoticiasList()
+            .onSuccess { state.value = Success(it) }
+            .onFailure { state.value = Error(it.throwable) }
     }
 }

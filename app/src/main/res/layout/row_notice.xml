@@ -1,69 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="88dp"
-    android:layout_margin="4dp"
-    android:orientation="vertical"
-    app:cardCornerRadius="8dp"
-    app:cardElevation="6dp">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/message_container"
+    <data>
+
+        <variable
+            name="obj"
+            type="com.shiomara.appnews.domain.noticias.Noticia" />
+    </data>
+
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="88dp"
+        android:layout_margin="4dp"
+        android:orientation="vertical"
         android:clickable="true"
         android:focusable="true"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:cardCornerRadius="8dp"
+        app:cardElevation="6dp">
 
-        <ImageView
-            android:id="@+id/icon_name"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:foregroundGravity="center"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_news" />
-
-        <TextView
-            android:id="@+id/txtTituloNoticia"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:layout_marginHorizontal="16dp"
-            android:maxLines="2"
-            android:textStyle="bold"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/noticiaContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/icon_name"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Noticia 1: ejemplo de noticias, ejemplo de noticias" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/icon_author"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            app:layout_constraintStart_toStartOf="@+id/txtTituloNoticia"
-            app:layout_constraintTop_toBottomOf="@id/txtTituloNoticia"
-            app:srcCompat="@drawable/ic_author"
-            app:tint="@color/color_accent" />
+            <ImageView
+                android:id="@+id/icon_name"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:foregroundGravity="center"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_news" />
 
-        <TextView
-            android:id="@+id/txtAutor"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="@+id/icon_author"
-            app:layout_constraintEnd_toEndOf="@+id/txtTituloNoticia"
-            app:layout_constraintStart_toEndOf="@+id/icon_author"
-            app:layout_constraintTop_toTopOf="@+id/icon_author"
-            tools:text="Autor: Shiomara Huaracallo" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.cardview.widget.CardView>
+            <TextView
+                android:id="@+id/txtTituloNoticia"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="12dp"
+                android:maxLines="2"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/icon_name"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Noticia 1: ejemplo de noticias, ejemplo de noticias" />
+
+            <ImageView
+                android:id="@+id/icon_author"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                app:layout_constraintStart_toStartOf="@+id/txtTituloNoticia"
+                app:layout_constraintTop_toBottomOf="@id/txtTituloNoticia"
+                app:srcCompat="@drawable/ic_author"
+                app:tint="@color/color_accent" />
+
+            <TextView
+                android:id="@+id/txtAutor"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/icon_author"
+                app:layout_constraintEnd_toEndOf="@+id/txtTituloNoticia"
+                app:layout_constraintStart_toEndOf="@+id/icon_author"
+                app:layout_constraintTop_toTopOf="@+id/icon_author"
+                tools:text="Autor: Shiomara Huaracallo" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

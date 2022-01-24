@@ -7,6 +7,7 @@
     tools:context=".presentation.ui.view.MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -80,15 +81,13 @@
                         android:id="@+id/emptyView"
                         layout="@layout/content_empty_state"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:visibility="gone" />
+                        android:layout_height="match_parent" />
 
                     <include
                         android:id="@+id/viewListNoticias"
                         layout="@layout/content_main"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:visibility="visible" />
+                        android:layout_height="match_parent"/>
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
